@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>airnova | User Dashboard</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="dashboard">
+      <header class="card topbar">
+        <div class="brand-wrap">
+          <div class="logo-pill">🌿 AQI</div>
+          <h1 class="app-title">AIRNOVA</h1>
+          <p>User Dashboard</p>
+        </div>
+        <div class="top-actions">
+          <span id="userDataBadge" class="status-badge fallback">Fallback Data</span>
+          <a class="ghost-btn" href="./admin.html">Admin</a>
+          <a class="ghost-btn" href="./index.html">Home</a>
+        </div>
+      </header>
+
+      <section class="card">
+        <label>City
+          <select id="citySelect"></select>
+        </label>
+      </section>
+
+      <section class="card hero">
+        <div class="hero-left">
+          <p class="hero-sub">Current AQI — <span id="cityName">--</span></p>
+          <div class="gauge-wrap">
+            <div class="gauge" id="aqiGauge"><div class="gauge-inner"><div class="gauge-value" id="aqiVal">--</div><div class="gauge-status" id="aqiStatus">--</div><div class="health-icon" id="healthIcon">--</div></div></div>
+          </div>
+          <p id="aqiDate" class="hero-trend">Date: --</p>
+          <p id="aqiTrend" class="hero-trend">AQI trend: --</p>
+          <div class="aqi-legend" id="aqiLegend">
+            <span>0-50 Good</span><span>51-100 Moderate</span><span>101-150 Sensitive</span><span>151-200 Unhealthy</span><span>201-300 Very Unhealthy</span><span>300+ Hazardous</span>
+          </div>
+        </div>
+        <div class="hero-right">
+          <h2>Recommendations</h2>
+          <ul class="recommend-list" id="recList"><li>Loading...</li></ul>
+          <div class="hero-stats" id="predStats"></div>
+          <div class="weather-grid" id="weatherStats"></div>
+          <p class="updated-live"><span class="live-dot"></span><span id="liveUpdated">Live Updated --</span></p>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Live Pollutant Snapshot</h2>
+        <div class="pollutants" id="pollutants"></div>
+      </section>
+
+      <section class="card chart-card">
+        <h2>48-Hour AQI Prediction</h2>
+        <p class="hero-sub" id="forecastMeta">Loading forecast...</p>
+        <div id="forecastTooltip" class="chart-tip"></div>
+        <canvas id="forecastChart" width="1000" height="320"></canvas>
+        <div class="forecast-mini-cards" id="forecastMiniCards"></div>
+      </section>
+
+      <section class="card">
+        <h2>City Comparison</h2>
+        <div class="comparison" id="cityComparison"></div>
+      </section>
+    </main>
+    <script src="./user.js"></script>
+  </body>
+</html>

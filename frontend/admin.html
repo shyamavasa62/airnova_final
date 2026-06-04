@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>airnova | Admin Dashboard</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="dashboard">
+      <header class="card topbar">
+        <div class="brand-wrap">
+          <div class="logo-pill">🌿 AQI</div>
+          <h1 class="app-title">AIRNOVA</h1>
+          <p>Admin Dashboard</p>
+        </div>
+        <div class="top-actions">
+          <span id="adminDataBadge" class="status-badge fallback">Fallback Data</span>
+          <a class="ghost-btn" href="./user.html">User</a>
+          <a class="ghost-btn" href="./index.html">Home</a>
+        </div>
+      </header>
+
+      <section class="card controls">
+        <h2>Realtime Stream Controls</h2>
+        <form id="adminForm">
+          <label>City <select id="adminCity"></select></label>
+          <button type="button" id="btnCurrent">Fetch Current</button>
+          <button type="button" id="btnNext">Step Next</button>
+        </form>
+        <div class="result" id="adminStatus">Ready.</div>
+      </section>
+
+      <section class="card">
+        <h2>Current City Snapshot</h2>
+        <div class="analytics-grid" id="adminSnapshotCards">
+          <div class="analytics-card">AQI<br /><strong>--</strong></div>
+          <div class="analytics-card">Status<br /><strong>--</strong></div>
+          <div class="analytics-card">Record Date<br /><strong>--</strong></div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>48-Hour AQI Forecast (3-hour intervals)</h2>
+        <div class="code-box" id="forecastTableWrap">
+          <table id="forecastTable" style="width: 100%; border-collapse: collapse;">
+            <thead>
+              <tr>
+                <th style="text-align:left; padding: 8px;">Horizon</th>
+                <th style="text-align:left; padding: 8px;">Time</th>
+                <th style="text-align:left; padding: 8px;">Predicted AQI</th>
+                <th style="text-align:left; padding: 8px;">Status</th>
+              </tr>
+            </thead>
+            <tbody id="forecastRows">
+              <tr><td colspan="4" style="padding: 8px;">Loading...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Admin Tools</h2>
+        <div class="controls">
+          <form>
+            <label>Upload Dataset CSV
+              <input id="csvInput" type="file" accept=".csv" />
+            </label>
+            <button type="button" id="btnUploadCsv" onclick="uploadCsv('replace')">Upload & Replace Dataset</button>
+            <button type="button" id="btnSimTrain">Run Retrain (Simulated)</button>
+          </form>
+        </div>
+        <div class="code-box" id="adminLogs">No admin actions yet.</div>
+      </section>
+
+      <section class="card">
+        <h2>Model Metrics (Latest Retrain)</h2>
+        <div class="analytics-grid" id="modelMetricsCards">
+          <div class="analytics-card">RandomForest MAE<br /><strong>--</strong></div>
+          <div class="analytics-card">RandomForest RMSE<br /><strong>--</strong></div>
+          <div class="analytics-card">RandomForest R²<br /><strong>--</strong></div>
+          <div class="analytics-card">ARIMA Order<br /><strong>--</strong></div>
+          <div class="analytics-card">ARIMA Valid MAE<br /><strong>--</strong></div>
+          <div class="analytics-card">Trained On Rows<br /><strong>--</strong></div>
+        </div>
+        <p class="updated" id="modelMetricsUpdated">No retrain run yet.</p>
+      </section>
+    </main>
+    <script src="./admin.js"></script>
+  </body>
+</html>
